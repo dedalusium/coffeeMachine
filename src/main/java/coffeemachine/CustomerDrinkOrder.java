@@ -1,18 +1,18 @@
 package coffeemachine;
 
 public class CustomerDrinkOrder {
-    private Command command;
+    private Drink drink;
     private int sugarNumber;
     private float moneyAmount;
 
-    public CustomerDrinkOrder(Command command, int sugarNumber, float moneyAmount) {
-        this.command = command;
+    public CustomerDrinkOrder(Drink drink, int sugarNumber, float moneyAmount) {
+        this.drink = drink;
         this.sugarNumber = sugarNumber;
         this.moneyAmount = moneyAmount;
     }
 
-    public Command getCommand() {
-        return command;
+    public Drink getDrink() {
+        return drink;
     }
 
     public int getSugarNumber() {

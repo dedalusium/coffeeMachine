@@ -1,18 +1,18 @@
 package coffeemachine;
 
 public class CoffeeMachineOutput {
-    private Command command;
+    private Drink drink;
     private int sugarNumber;
     private float cost;
     private boolean hasStick;
     private String message;
 
-    public CoffeeMachineOutput(Command command) {
-        this.command = command;
+    public CoffeeMachineOutput(Drink drink) {
+        this.drink = drink;
     }
 
-    public Command getCommand() {
-        return command;
+    public Drink getDrink() {
+        return drink;
     }
 
     public int getSugarNumber() {

@@ -9,23 +9,27 @@ import java.util.List;
 
 public class DrinkMaker {
     private CoffeeMachineOutput output;
-    private List<Command> knownDrinks;
 
-    public DrinkMaker() {
-        knownDrinks = new ArrayList<>(3);
-        knownDrinks.add(Command.COFFEE);
-        knownDrinks.add(Command.TEA);
-        knownDrinks.add(Command.HOT_CHOCOLATE);
+    public void computeInput(String input) throws NotKnownDrinkException, NotEnoughMoneyException {
+        String[] splitedInput = input.split(":");
+        if ("M".equals(splitedInput[0])) {
+            sendMessage(splitedInput[1]);
+        } else {
+            try {
+                makeDrink(new CustomerDrinkOrder(Drink.valueOf(splitedInput[0]), Integer.valueOf(splitedInput[1]), Float.valueOf(splitedInput[2])));
+            } catch (IllegalArgumentException e) {
+                throw new NotKnownDrinkException();
+            }
+        }
     }
 
-    public void makeDrink(Command command, float inputMoneyAmout) throws NotKnownDrinkException, NotEnoughMoneyException {
-        if (!knownDrinks.contains(command)) {
-            throw new NotKnownDrinkException();
-        } else if(inputMoneyAmout < command.getCost()){
-            throw new NotEnoughMoneyException(command.getCost() - inputMoneyAmout);
-        }
-        else {
-            this.output = new CoffeeMachineOutput(command);
+    public void makeDrink(CustomerDrinkOrder order) throws NotKnownDrinkException, NotEnoughMoneyException {
+        Drink drink = order.getDrink();
+        float money = order.getMoneyAmount();
+        if (money < drink.getCost()) {
+            throw new NotEnoughMoneyException(drink.getCost() - money);
+        } else {
+            this.output = new CoffeeMachineOutput(drink);
         }
     }
 
