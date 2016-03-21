@@ -22,7 +22,7 @@ public class DrinkMaker {
         if (!knownDrinks.contains(command)) {
             throw new NotKnownDrinkException();
         } else if(inputMoneyAmout < command.getCost()){
-            throw new NotEnoughMoneyException();
+            throw new NotEnoughMoneyException(command.getCost() - inputMoneyAmout);
         }
         else {
             this.output = new CoffeeMachineOutput(command);
