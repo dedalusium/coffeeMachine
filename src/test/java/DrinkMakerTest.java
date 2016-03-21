@@ -76,4 +76,12 @@ public class DrinkMakerTest {
             Assert.assertTrue(expected.equals(e.getMessage()));
         }
     }
+
+    @Test
+    public void testMakeOrangeJuiceDrink() throws NotKnownDrinkException, NotEnoughMoneyException {
+        drinkMaker = new DrinkMaker();
+        drinkMaker.computeInput("O:0:0.6");
+        Assert.assertTrue(Drink.O.equals(drinkMaker.getOutput().getDrink()));
+        Assert.assertFalse(drinkMaker.getOutput().isHasStick());
+    }
 }

@@ -3,7 +3,8 @@ package coffeemachine;
 public enum Drink {
     T("Tea", 0.4f),
     C("Coffee", 0.6f),
-    H("Hot chocolate", 0.5f);
+    H("Hot chocolate", 0.5f),
+    O("Orange juice", 0.6f);
 
 
     private String name;

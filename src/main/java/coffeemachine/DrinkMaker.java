@@ -4,9 +4,6 @@ import coffeemachine.exception.NotEnoughMoneyException;
 import coffeemachine.exception.NotKnownDrinkException;
 import coffeemachine.exception.TooManySugarException;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DrinkMaker {
     private CoffeeMachineOutput output;
 
