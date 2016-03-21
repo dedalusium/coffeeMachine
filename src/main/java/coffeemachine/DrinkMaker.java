@@ -9,7 +9,7 @@ public class DrinkMaker {
 
     public void computeInput(String input) throws NotKnownDrinkException, NotEnoughMoneyException {
         String[] splitedInput = input.split(":");
-        if ("M".equals(splitedInput[0])) {
+        if (splitedInput.length == 2) {
             sendMessage(splitedInput[1]);
         } else {
             try {
